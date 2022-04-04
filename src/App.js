@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Navbar from "./components/Navbar/Navbar";
+import MainFeaturedPost from "./components/MainFeaturedPost/MainFeaturedPost";
+import { Box, CssBaseline, Container } from "@mui/material";
+import Services from "./components/Services/Services";
+
+const theme = createTheme((theme) => ({
+  typography: {
+    fontFamily: ["Hubballi"],
+  },
+}));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box
+        sx={{
+          background: "#262625",
+          height: "100%",
+        }}
+      >
+        <Box sx={{ height: "80px" }} />
+        <Container
+          disableGutters={true}
+          maxWidth="xl"
+          sx={{
+            color: "white",
+            height: "100%",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Navbar />
+          <MainFeaturedPost />
+          <Services />
+        </Container>
+      </Box>
+
+      {/* <Navbar /> */}
+      {/* <MainFeaturedPost /> */}
+    </ThemeProvider>
   );
 }
 
